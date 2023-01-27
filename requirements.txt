@@ -1,0 +1,14 @@
+Django
+django-allauth
+django-crispy-forms
+whitenoise
+#psycopg2-binary==2.8.6
+######################
+gunicorn
+django-environ
+djangorestframework
+drf_yasg
+tensorflow
+scikit-learn
+pandas
+

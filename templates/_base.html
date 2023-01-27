@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <title>{% block title %}DjangoX{% endblock title %}</title>
+    <meta name="description" content="A framework for launching new Django projects quickly.">
+    <meta name="author" content="">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+    <script src="{% static 'js/Vue.js' %}"></script>
+
+
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% endblock %}
+</head>
+
+<body>
+<header class="header">
+    <div class="container--header">
+        <a href="{% url 'home' %}" class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="Логотип">
+        </a>
+
+        <div class="">
+            {% block header_text %}
+            {% endblock header_text %}
+        </div>
+    </div>
+</header>
+<main class="main">
+    {% block content %}
+
+    {% endblock content %}
+</main>
+<footer class="footer">
+    <p>FutureCoder - FutureView ©</p>
+</footer>
+
+
+<script src="{% static 'js/Axios.js' %}"></script>
+<script src="{% static 'js/Cookies.js' %}"></script>
+
+
+{% block javascript %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="{% static 'js/net.js' %}"></script>
+<script>
+    VANTA.NET({
+        el: "#first",
+        mouseControls: false,
+        touchControls: false,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        color: '#2970dc',
+        backgroundColor: '#001e36',
+        points: 14.00,
+        showDots: false
+    })
+</script>
+
+{% endblock javascript %}
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}Конструктор{% endblock title %}
+
+{% block header_text %}
+    <p class="header__text">
+        Напишите описание кода, котрый хотите получить !
+    </p>
+{% endblock header_text %}
+
+{% block content %}
+    <section class="section-coding" id="app">
+        <div class="codespace">
+            <div class="codespace__desc">
+                <div class="codespace__field">
+                    <textarea v-model="description"></textarea>
+                    <div class="row">
+                        <div class="lang-field">
+                            <input v-model="language" value="Python"
+                                   name="lang"
+                                   type="radio"
+                                   id="python">
+                            <label for="python">
+                                Python
+                            </label>
+                        </div>
+
+                        <div class="lang-field">
+                            <input v-model="language" value="Kotlin"
+                                   name="lang"
+                                   type="radio"
+                                   id="kotlin">
+                            <label for="kotlin">
+                                Kotlin
+                            </label>
+                        </div>
+
+                        <div class="lang-field">
+                            <input v-model="language" value="JavaScript"
+                                   name="lang"
+                                   type="radio"
+                                   id="javaScript">
+                            <label for="javaScript">
+                                JavaScript
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="!isLoading" class="code-btn-area">
+                    <button :disabled="!description || !language" class="code-btn" @click="submitDescription">НАКОДИТЬ</button>
+                </div>
+                <div v-else class="code-btn-area">
+                    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                    <p class="lil-text">Ожидание может занять до 20 секунд</p>
+                </div>
+
+            </div>
+
+            <h2 class="title title--code">Ваш код:</h2>
+            <div class="codespace__result">
+                <div class="numbers">
+                    <p v-for="num of numbers" class="numbers__item">[[num]]</p>
+                </div>
+                <textarea class="code" :rows="numbers.length"  :value="code"></textarea>
+            </div>
+
+        </div>
+    </section>
+
+{% endblock content %}
+
+{% block javascript %}
+    <script src="{% static 'js/codespace.js' %}"></script>
+{% endblock javascript %}
